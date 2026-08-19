@@ -1,0 +1,46 @@
+{
+  "name": "smart-parking-canvas",
+  "displayName": "Smart Parking Navigator",
+  "description": "Compact parking availability canvas for HDB car parks near your destination.",
+  "version": "1.0.0",
+  "scope": "project",
+  "capabilities": {
+    "canvas": {
+      "entryPoint": "extension.mjs",
+      "actions": [
+        {
+          "name": "setDestination",
+          "description": "Change the selected destination shown in the canvas.",
+          "inputSchema": {
+            "type": "object",
+            "required": ["destination"],
+            "properties": {
+              "destination": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Name of the Singapore destination to look up car parks for."
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "setFilter",
+          "description": "Apply a vehicle-type or availability filter to the car park list.",
+          "inputSchema": {
+            "type": "object",
+            "required": ["filter"],
+            "properties": {
+              "filter": {
+                "type": "string",
+                "enum": ["all", "available", "cars", "motorcycles", "heavy"],
+                "description": "Filter to apply: all, available, cars, motorcycles, or heavy."
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ]
+    }
+  }
+}
